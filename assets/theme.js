@@ -750,7 +750,7 @@ slate.Variants = (function() {
       this._updateMasterSelect(variant);
       this._updateImages(variant);
       this._updatePrice(variant);
-      this._updateIncoming(variant);
+      // this._updateIncoming(variant);
       this._updateShowVariantStock(this.product, variant);
       this._updateName(variant);
       this._updateSKU(variant);
@@ -762,12 +762,12 @@ slate.Variants = (function() {
     },
     
     /* Custom trigger */
-    _updateIncoming: function(variant) {
-      this.$container.trigger({
-        type: 'variantIncomingChange',
-        variant: variant
-      });
-    },
+    // _updateIncoming: function(variant) {
+    //   this.$container.trigger({
+    //     type: 'variantIncomingChange',
+    //     variant: variant
+    //   });
+    // },
 
     /* Custom trigger */
     _updateShowVariantStock: function(product, variant) {
@@ -6454,7 +6454,7 @@ theme.Product = (function() {
         "variant": this.variants.currentVariant,
         "product": this.variants.product
       }
-      this._updateIncomingSelf(prod);
+      // this._updateIncomingSelf(prod);
       this._updateNameSelf(prod);
       this._showVariantStockSelf(prod);
 
@@ -6474,10 +6474,10 @@ theme.Product = (function() {
         'variantPriceChange' + this.settings.namespace,
         this._updatePrice.bind(this)
       );
-      this.$container.on(
-        'variantIncomingChange' + this.settings.namespace,
-        this._updateIncomingSelf.bind(this)
-      );
+      // this.$container.on(
+      //   'variantIncomingChange' + this.settings.namespace,
+      //   this._updateIncomingSelf.bind(this)
+      // );
       this.$container.on(
         'variantNameChange' + this.settings.namespace,
         this._updateNameSelf.bind(this)
@@ -7118,14 +7118,15 @@ theme.Product = (function() {
       var generate_html = '';
 
       for (i = 0; i < product.variants.length; i++) {
-        if (product.variants[i].id !== variant.id && (product.variants[i].sku > 0 || product.variants[i].incoming)) {
+        // if (product.variants[i].id !== variant.id && (product.variants[i].sku > 0 || product.variants[i].incoming)) {
+        if (product.variants[i].id !== variant.id && product.variants[i].sku > 0) {
           show_other_stock = true;
           if (product.variants[i].sku > 0) {
             var msg = "op voorraad"
           }
-          else if (product.variants[i].incoming) {
-            var msg = "verwacht " + product.variants[i].next_incoming_date;
-          }
+          // else if (product.variants[i].incoming) {
+          //   var msg = "verwacht " + product.variants[i].next_incoming_date;
+          // }
           generate_html = generate_html + "<li>" + product.variants[i].title + ": " + msg + "</li>";
         }
       }
@@ -7143,13 +7144,14 @@ theme.Product = (function() {
       var variant = evt.variant;
       
       if (variant.sku == 0) {
-        if (variant.incoming) {
-          $(this.selectors.availability).html("Verwacht op voorraad: " + variant.next_incoming_date);
-        } else if (variant.name.includes("Orbea")) {
-          $(this.selectors.availability).html("Niet op voorraad. Enkele maanden levertijd bij de leverancier. Neem contact op om te bestellen");
-        } else {
-          $(this.selectors.availability).html("Leverbaar binnen enkele dagen");
-        }
+        $(this.selectors.availability).html("Niet op voorraad. Neem gerust contact op voor de levertijd");
+        // if (variant.incoming) {
+        //   $(this.selectors.availability).html("Verwacht op voorraad: " + variant.next_incoming_date);
+        // } else if (variant.name.includes("Orbea")) {
+        //   $(this.selectors.availability).html("Niet op voorraad. Enkele maanden levertijd bij de leverancier. Neem contact op om te bestellen");
+        // } else {
+        //   $(this.selectors.availability).html("Leverbaar binnen enkele dagen");
+        // }
       } else {
         $(this.selectors.availability).html("Op voorraad");
       }
