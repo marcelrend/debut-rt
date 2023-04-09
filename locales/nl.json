@@ -373,7 +373,7 @@
   "products": {
     "product": {
       "regular_price": "Normale prijs",
-      "sold_out": "Uitverkocht",
+      "sold_out": "Informeer naar beschikbaarheid",
       "in_stock": "Beschikbaar",
       "unavailable": "Niet beschikbaar",
       "on_sale": "Aanbieding",
