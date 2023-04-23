@@ -750,7 +750,7 @@ slate.Variants = (function() {
       this._updateMasterSelect(variant);
       this._updateImages(variant);
       this._updatePrice(variant);
-      // this._updateIncoming(variant);
+      this._updateIncoming(variant);
       this._updateShowVariantStock(this.product, variant);
       this._updateName(variant);
       this._updateSKU(variant);
@@ -760,14 +760,14 @@ slate.Variants = (function() {
         this._updateHistoryState(variant);
       }
     },
-    
+
     /* Custom trigger */
-    // _updateIncoming: function(variant) {
-    //   this.$container.trigger({
-    //     type: 'variantIncomingChange',
-    //     variant: variant
-    //   });
-    // },
+    _updateIncoming: function(variant) {
+      this.$container.trigger({
+        type: 'variantIncomingChange',
+        variant: variant
+      });
+    },
 
     /* Custom trigger */
     _updateShowVariantStock: function(product, variant) {
@@ -777,7 +777,7 @@ slate.Variants = (function() {
         product: product
       });
     },
-    
+
     /* Custom trigger */
     _updateName: function(variant) {
       this.$container.trigger({
@@ -785,8 +785,8 @@ slate.Variants = (function() {
         variant: variant
       });
     },
-    
-    
+
+
     /**
      * Trigger event when variant image changes
      *
@@ -6454,14 +6454,14 @@ theme.Product = (function() {
         "variant": this.variants.currentVariant,
         "product": this.variants.product
       }
-      // this._updateIncomingSelf(prod);
+      this._updateIncomingSelf(prod);
       this._updateNameSelf(prod);
-      this._showVariantStockSelf(prod);
+      // this._showVariantStockSelf(prod);
 
-      this.$container.on(
-        'showVariantStockChange' + this.settings.namespace,
-        this._showVariantStockSelf.bind(this)
-      );
+      // this.$container.on(
+      //   'showVariantStockChange' + this.settings.namespace,
+      //   this._showVariantStockSelf.bind(this)
+      // );
       this.$container.on(
         'variantChange' + this.settings.namespace,
         this._updateAvailability.bind(this)
@@ -6474,10 +6474,10 @@ theme.Product = (function() {
         'variantPriceChange' + this.settings.namespace,
         this._updatePrice.bind(this)
       );
-      // this.$container.on(
-      //   'variantIncomingChange' + this.settings.namespace,
-      //   this._updateIncomingSelf.bind(this)
-      // );
+      this.$container.on(
+        'variantIncomingChange' + this.settings.namespace,
+        this._updateIncomingSelf.bind(this)
+      );
       this.$container.on(
         'variantNameChange' + this.settings.namespace,
         this._updateNameSelf.bind(this)
@@ -7109,6 +7109,7 @@ theme.Product = (function() {
     },
 
     /* Custom trigger */
+    /*
     _showVariantStockSelf: function(evt) {
       // Custom get stock
       var product = evt.product;
@@ -7118,15 +7119,14 @@ theme.Product = (function() {
       var generate_html = '';
 
       for (i = 0; i < product.variants.length; i++) {
-        // if (product.variants[i].id !== variant.id && (product.variants[i].sku > 0 || product.variants[i].incoming)) {
-        if (product.variants[i].id !== variant.id && product.variants[i].sku > 0) {
+        if (product.variants[i].id !== variant.id && (product.variants[i].sku > 0 || product.variants[i].available)) {
           show_other_stock = true;
           if (product.variants[i].sku > 0) {
-            var msg = "op voorraad"
+            var msg = "op voorraad";
           }
-          // else if (product.variants[i].incoming) {
-          //   var msg = "verwacht " + product.variants[i].next_incoming_date;
-          // }
+          else if (product.variants[i].available) {
+            var msg = "op voorraad bij leverancier";
+          }
           generate_html = generate_html + "<li>" + product.variants[i].title + ": " + msg + "</li>";
         }
       }
@@ -7138,25 +7138,23 @@ theme.Product = (function() {
         $(this.selectors.variantsInStock).html("");
       }
     },
-    
+    */
+
     /* Custom trigger */
     _updateIncomingSelf: function(evt) {
       var variant = evt.variant;
-      
+
       if (variant.sku == 0) {
-        $(this.selectors.availability).html("Niet op voorraad. Neem gerust contact op voor de levertijd");
-        // if (variant.incoming) {
-        //   $(this.selectors.availability).html("Verwacht op voorraad: " + variant.next_incoming_date);
-        // } else if (variant.name.includes("Orbea")) {
-        //   $(this.selectors.availability).html("Niet op voorraad. Enkele maanden levertijd bij de leverancier. Neem contact op om te bestellen");
-        // } else {
-        //   $(this.selectors.availability).html("Leverbaar binnen enkele dagen");
-        // }
+        if (variant.available) {
+          $(this.selectors.availability).html("Op voorraad bij leverancier. Geschatte levertijd 5-10 werkdagen.");
+        } else {
+          $(this.selectors.availability).html("Niet op voorraad bij leverancier. Informeer naar beschikbaarheid.");
+        }
       } else {
-        $(this.selectors.availability).html("Op voorraad");
+        $(this.selectors.availability).html("Direct uit voorraad leverbaar. Geschatte levertijd 2 werkdagen.");
       }
     },
-    
+
     /* Custom trigger */
     _updateNameSelf: function(evt) {
       $(this.selectors.name).html(evt.variant.name);
@@ -7173,7 +7171,7 @@ theme.Product = (function() {
 
       this._updatePrice(evt);
     },
-    
+
     _updateMedia: function(evt) {
       var variant = evt.variant;
       var mediaId = variant.featured_media.id;
