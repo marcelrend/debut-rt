@@ -144,6 +144,41 @@
       <!--Custom-->
       <div class="site-footer__item site-footer__item--one-third">
         <div class="site-footer__item-inner site-footer__item-inner--text">
+          {% if request.locale.iso_code == 'en' %}
+          <p class="h4">Opening hours</p>
+          <div class="site-footer__rte">
+            <table>
+              <tr>
+                  <td style="padding: 0">Monday</td>
+                  <td>closed</td>
+              </tr>
+              <tr>
+                  <td style="padding: 0">Tuesday</td>
+                  <td>09:00–12:00, 13:00-17:30</td>
+              </tr>
+              <tr>
+                  <td style="padding: 0">Wednesday</td>
+                  <td>09:00–12:00, 13:00-17:30</td>
+              </tr>
+              <tr>
+                  <td style="padding: 0">Thursday</td>
+                  <td>closed</td>
+              </tr>
+              <tr>
+                  <td style="padding: 0">Friday</td>
+                  <td>09:00–12:00, 13:00-17:30</td>
+              </tr>
+              <tr>
+                  <td style="padding: 0">Saturday</td>
+                  <td>09:00–12:00, 13:00-16:00</td>
+              </tr>
+              <tr>
+                  <td style="padding: 0">Sunday</td>
+                  <td>closed</td>
+              </tr>
+          	</table>
+          </div>
+          {% else %}
           <p class="h4">Openingstijden</p>
           <div class="site-footer__rte">
             <table>
@@ -161,7 +196,7 @@
               </tr>
               <tr>
                   <td style="padding: 0">donderdag</td>
-                  <td>09:00–12:00, 13:00-17:30</td>
+                  <td>gesloten</td>
               </tr>
               <tr>
                   <td style="padding: 0">vrijdag</td>
@@ -177,6 +212,7 @@
               </tr>
           	</table>
           </div>
+          {% endif %}
         </div>
       </div>
           
