@@ -6456,12 +6456,12 @@ theme.Product = (function() {
       }
       this._updateIncomingSelf(prod);
       this._updateNameSelf(prod);
-      // this._showVariantStockSelf(prod);
+      this._showVariantStockSelf(prod);
 
-      // this.$container.on(
-      //   'showVariantStockChange' + this.settings.namespace,
-      //   this._showVariantStockSelf.bind(this)
-      // );
+      this.$container.on(
+        'showVariantStockChange' + this.settings.namespace,
+        this._showVariantStockSelf.bind(this)
+      );
       this.$container.on(
         'variantChange' + this.settings.namespace,
         this._updateAvailability.bind(this)
@@ -7109,7 +7109,6 @@ theme.Product = (function() {
     },
 
     /* Custom trigger */
-    /*
     _showVariantStockSelf: function(evt) {
       // Custom get stock
       var product = evt.product;
@@ -7119,26 +7118,29 @@ theme.Product = (function() {
       var generate_html = '';
 
       for (i = 0; i < product.variants.length; i++) {
-        if (product.variants[i].id !== variant.id && (product.variants[i].sku > 0 || product.variants[i].available)) {
+        if (
+          product.variants[i].id !== variant.id &&
+          (product.variants[i].sku > 0 || product.variants[i].available) &&
+          product.variants[i].option1 == variant.option1
+        ) {
           show_other_stock = true;
           if (product.variants[i].sku > 0) {
-            var msg = "op voorraad";
+            var msg = theme.strings.manualInStock;
           }
           else if (product.variants[i].available) {
-            var msg = "op voorraad bij leverancier";
+            var msg = theme.strings.manualInStockAtSupplier;
           }
-          generate_html = generate_html + "<li>" + product.variants[i].title + ": " + msg + "</li>";
+          generate_html = generate_html + "<li>" + product.variants[i].option2 + ": " + msg + "</li>";
         }
       }
 
       if (show_other_stock) {
-        final_msg = "Andere beschikbare varianten:<ul>" + generate_html + "</ul>"
+        final_msg = theme.strings.manualOtherVariants + ":<ul>" + generate_html + "</ul>"
         $(this.selectors.variantsInStock).html(final_msg);
       } else {
         $(this.selectors.variantsInStock).html("");
       }
     },
-    */
 
     /* Custom trigger */
     _updateIncomingSelf: function(evt) {
@@ -7146,12 +7148,12 @@ theme.Product = (function() {
 
       if (variant.sku == 0) {
         if (variant.available) {
-          $(this.selectors.availability).html(theme.strings.manualInStockAtSupplier);
+          $(this.selectors.availability).html(theme.strings.manualInStockAtSupplierWithDelivery);
         } else {
-          $(this.selectors.availability).html(theme.strings.manualNotAvailable);
+          $(this.selectors.availability).html(theme.strings.manualNotAvailableWithDelivery);
         }
       } else {
-        $(this.selectors.availability).html(theme.strings.manualInStock);
+        $(this.selectors.availability).html(theme.strings.manualInStockWithDelivery);
       }
     },
 

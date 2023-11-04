@@ -383,9 +383,12 @@
   },
   "products": {
     "product": {
-      "manual_in_stock": "Direct uit voorraad leverbaar. Geschatte levertijd 2 werkdagen.",
-      "manual_in_stock_at_supplier": "Op voorraad bij leverancier. Geschatte levertijd 5-10 werkdagen.",
-      "manual_not_available": "Niet op voorraad bij leverancier. Informeer naar beschikbaarheid.",
+      "manual_in_stock_with_delivery": "Direct uit voorraad leverbaar. Geschatte levertijd 2 werkdagen.",
+      "manual_in_stock_at_supplier_with_delivery": "Op voorraad bij leverancier. Geschatte levertijd 5-10 werkdagen.",
+      "manual_not_available_with_delivery": "Niet op voorraad bij leverancier. Informeer naar beschikbaarheid.",
+      "manual_other_variants": "Andere beschikbare kleuren in deze maat",
+      "manual_in_stock": "op voorraad",
+      "manual_in_stock_at_supplier": "op voorraad bij leverancier",
       "regular_price": "Normale prijs",
       "sold_out": "Informeer naar beschikbaarheid",
       "in_stock": "Beschikbaar",
