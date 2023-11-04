@@ -1,4 +1,15 @@
 {
+  "store_openings": {
+    "opening_hours": "Opening hours",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "closed": "closed"
+  },
   "general": {
     "accessibility": {
       "skip_to_content": "Skip to content",

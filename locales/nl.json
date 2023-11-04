@@ -1,4 +1,15 @@
 {
+  "store_openings": {
+    "opening_hours": "Openingstijden",
+    "monday": "Maandag",
+    "tuesday": "Dinsdag",
+    "wednesday": "Woensdag",
+    "thursday": "Donderdag",
+    "friday": "Vrijdag",
+    "saturday": "Zaterdag",
+    "sunday": "Zondag",
+    "closed": "gesloten"
+  },
   "general": {
     "accessibility": {
       "skip_to_content": "Meteen naar de content",

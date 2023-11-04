@@ -144,78 +144,42 @@
       <!--Custom-->
       <div class="site-footer__item site-footer__item--one-third">
         <div class="site-footer__item-inner site-footer__item-inner--text">
-          {% if request.locale.iso_code == 'en' %}
-          <p class="h4">Opening hours</p>
+          <p class="h4">{{ 'store_openings.opening_hours' | t }}</p>
           <div class="site-footer__rte">
             <table>
               <tr>
-                  <td style="padding: 0">Monday</td>
-                  <td>closed</td>
+                  <td style="padding: 0">{{ 'store_openings.monday' | t }}</td>
+                  <td>{{ 'store_openings.closed' | t }}</td>
               </tr>
               <tr>
-                  <td style="padding: 0">Tuesday</td>
+                  <td style="padding: 0">{{ 'store_openings.tuesday' | t }}</td>
                   <td>09:00–12:00, 13:00-17:30</td>
               </tr>
               <tr>
-                  <td style="padding: 0">Wednesday</td>
+                  <td style="padding: 0">{{ 'store_openings.wednesday' | t }}</td>
                   <td>09:00–12:00, 13:00-17:30</td>
               </tr>
               <tr>
-                  <td style="padding: 0">Thursday</td>
-                  <td>closed</td>
+                  <td style="padding: 0">{{ 'store_openings.thursday' | t }}</td>
+                  <td>{{ 'store_openings.closed' | t }}</td>
               </tr>
               <tr>
-                  <td style="padding: 0">Friday</td>
+                  <td style="padding: 0">{{ 'store_openings.friday' | t }}</td>
                   <td>09:00–12:00, 13:00-17:30</td>
               </tr>
               <tr>
-                  <td style="padding: 0">Saturday</td>
+                  <td style="padding: 0">{{ 'store_openings.saturday' | t }}</td>
                   <td>09:00–12:00, 13:00-16:00</td>
               </tr>
               <tr>
-                  <td style="padding: 0">Sunday</td>
-                  <td>closed</td>
+                  <td style="padding: 0">{{ 'store_openings.sunday' | t }}</td>
+                  <td>{{ 'store_openings.closed' | t }}</td>
               </tr>
           	</table>
           </div>
-          {% else %}
-          <p class="h4">Openingstijden</p>
-          <div class="site-footer__rte">
-            <table>
-              <tr>
-                  <td style="padding: 0">maandag</td>
-                  <td>gesloten</td>
-              </tr>
-              <tr>
-                  <td style="padding: 0">dinsdag</td>
-                  <td>09:00–12:00, 13:00-17:30</td>
-              </tr>
-              <tr>
-                  <td style="padding: 0">woensdag</td>
-                  <td>09:00–12:00, 13:00-17:30</td>
-              </tr>
-              <tr>
-                  <td style="padding: 0">donderdag</td>
-                  <td>gesloten</td>
-              </tr>
-              <tr>
-                  <td style="padding: 0">vrijdag</td>
-                  <td>09:00–12:00, 13:00-17:30</td>
-              </tr>
-              <tr>
-                  <td style="padding: 0">zaterdag</td>
-                  <td>09:00–12:00, 13:00-16:00</td>
-              </tr>
-              <tr>
-                  <td style="padding: 0">zondag</td>
-                  <td>gesloten</td>
-              </tr>
-          	</table>
-          </div>
-          {% endif %}
         </div>
       </div>
-          
+
       <!--/Custom-->
       {%- for block in section.blocks -%}
 
@@ -396,7 +360,6 @@
         {%- else -%}
           <div class="small--hide site-footer-item-align-right {% if show_selectors or show_payment_icons %}site-footer-item-center-vertically{% endif %}">
             <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
-            <small class="site-footer__copyright-content site-footer__copyright-content-powered-by">{{ powered_by_link }}</small>
           </div>
         {%- endif -%}
       </div>
@@ -410,13 +373,11 @@
       {%- if social_icons and show_selectors -%}
         <div class="grid__item small--hide site-footer-item-align-right {% if show_payment_icons %}one-half{% endif %}">
           <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
-          <small class="site-footer__copyright-content site-footer__copyright-content--powered-by">{{ powered_by_link }}</small>
         </div>
       {%- endif -%}
 
       <div class="grid__item small--one-whole {{ copyright_show_class }} site-footer-item-align-right">
         <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
-        <small class="site-footer__copyright-content site-footer__copyright-content--powered-by">{{ powered_by_link }}</small>
       </div>
     </div>
   </div>
