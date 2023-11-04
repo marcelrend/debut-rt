@@ -372,6 +372,9 @@
   },
   "products": {
     "product": {
+      "manual_in_stock": "Directly available from stock. Expected delivery time 2 working days.",
+      "manual_in_stock_at_supplier": "In stock at supplier. Estimated delivery time 5-10 working days.",
+      "manual_not_available": "Not available at supplier. Please reach out for more information on the availability.",
       "regular_price": "Regular price",
       "sold_out": "Sold out",
       "in_stock": "Available",

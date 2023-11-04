@@ -7146,12 +7146,12 @@ theme.Product = (function() {
 
       if (variant.sku == 0) {
         if (variant.available) {
-          $(this.selectors.availability).html("Op voorraad bij leverancier. Geschatte levertijd 5-10 werkdagen.");
+          $(this.selectors.availability).html(theme.strings.manualInStockAtSupplier);
         } else {
-          $(this.selectors.availability).html("Niet op voorraad bij leverancier. Informeer naar beschikbaarheid.");
+          $(this.selectors.availability).html(theme.strings.manualNotAvailable);
         }
       } else {
-        $(this.selectors.availability).html("Direct uit voorraad leverbaar. Geschatte levertijd 2 werkdagen.");
+        $(this.selectors.availability).html(theme.strings.manualInStock);
       }
     },
 

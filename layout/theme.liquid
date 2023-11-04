@@ -46,6 +46,9 @@
         widescreen: 1400
       },
       strings: {
+        manualInStock: {{ 'products.product.manual_in_stock' | t | json }},
+        manualInStockAtSupplier: {{ 'products.product.manual_in_stock_at_supplier' | t | json }},
+        manualNotAvailable: {{ 'products.product.manual_not_available' | t | json }},
         addToCart: {{ 'products.product.add_to_cart' | t | json }},
         soldOut: {{ 'products.product.sold_out' | t | json }},
         unavailable: {{ 'products.product.unavailable' | t | json }},
@@ -95,7 +98,7 @@
 
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
   </script>
-  
+
   {%- if request.page_type contains 'customers/' -%}
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
   {%- endif -%}

@@ -372,6 +372,9 @@
   },
   "products": {
     "product": {
+      "manual_in_stock": "Direct uit voorraad leverbaar. Geschatte levertijd 2 werkdagen.",
+      "manual_in_stock_at_supplier": "Op voorraad bij leverancier. Geschatte levertijd 5-10 werkdagen.",
+      "manual_not_available": "Niet op voorraad bij leverancier. Informeer naar beschikbaarheid.",
       "regular_price": "Normale prijs",
       "sold_out": "Informeer naar beschikbaarheid",
       "in_stock": "Beschikbaar",
