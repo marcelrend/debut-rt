@@ -7146,7 +7146,7 @@ theme.Product = (function() {
     _updateIncomingSelf: function(evt) {
       var variant = evt.variant;
 
-      if (variant.sku == 0) {
+      if (variant.sku === null || variant.sku == 0) {
         if (variant.available) {
           $(this.selectors.availability).html(theme.strings.manualInStockAtSupplierWithDelivery);
         } else {
